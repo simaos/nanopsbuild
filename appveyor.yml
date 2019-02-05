@@ -7,11 +7,11 @@ environment:
     secure: gvgvfMOklGvBlsbXpw68WQ==
 install:
   - docker version
-  - echo DOCKER_TARGET is $env:DOCKER_TARGET
+  - echo DOCKER_TARGET is %DOCKER_TARGET%
 build_script:
-  - docker build -t $env:DOCKER_TARGET -f Dockerfile
+  - docker build -t %DOCKER_TARGET% -f Dockerfile
 test_script:
-  - docker run $env:DOCKER_TARGET
+  - docker run %DOCKER_TARGET%
 deploy_script:
   - docker login -u="$env:DOCKER_USER" -p="$env:DOCKER_PASS"
   - docker push $env:DOCKER_TARGET
