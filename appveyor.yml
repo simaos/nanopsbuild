@@ -10,6 +10,7 @@ install:
 build_script:
   - docker build -t $env:DOCKER_TARGET -f Dockerfile
 test_script:
+  - echo DOCKER_TARGET is $env:DOCKER_TARGET
   - docker run $env:DOCKER_TARGET
 deploy_script:
   - docker login -u="$env:DOCKER_USER" -p="$env:DOCKER_PASS"
