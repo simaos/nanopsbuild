@@ -1,0 +1,17 @@
+image: Visual Studio 2017
+environment:
+  DOCKER_USER:
+    secure: 09M6/EHaWHd+zNyhVD2LNQ==
+  DOCKER_PASS:
+    secure: gvgvfMOklGvBlsbXpw68WQ==
+  DOCKER_TARGET:
+    simaos/nanopsbuild
+install:
+  - docker version
+build_script:
+  - docker build -t $env:DOCKER_TARGET -f Dockerfile
+test_script:
+  - docker run $env:DOCKER_TARGET
+deploy_script:
+  - docker login -u="$env:DOCKER_USER" -p="$env:DOCKER_PASS"
+  - docker push $env:DOCKER_TARGET
