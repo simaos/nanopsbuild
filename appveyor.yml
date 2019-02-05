@@ -9,7 +9,7 @@ install:
   - docker version
   - echo DOCKER_TARGET is %DOCKER_TARGET%
 build_script:
-  - docker build -t %DOCKER_TARGET% -f Dockerfile
+  - docker build -t %DOCKER_TARGET% -f Dockerfile .
 test_script:
   - docker run %DOCKER_TARGET%
 deploy_script:
