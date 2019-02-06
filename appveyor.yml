@@ -13,5 +13,5 @@ build_script:
 test_script:
   - docker run %DOCKER_TARGET%
 deploy_script:
-  - docker login -u="$env:DOCKER_USER" -p="$env:DOCKER_PASS"
+  - docker login -u="%DOCKER_USER%" -p="%DOCKER_PASS%"
   - docker push $env:DOCKER_TARGET
