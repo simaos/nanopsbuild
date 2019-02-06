@@ -8,10 +8,12 @@ environment:
 install:
   - docker version
   - echo DOCKER_TARGET is %DOCKER_TARGET%
+  - systeminfo
 build_script:
   - docker build -t %DOCKER_TARGET% -f Dockerfile .
 test_script:
-  - docker run %DOCKER_TARGET%
+  - docker run %DOCKER_TARGET% systeminfo
+  - docker run %DOCKER_TARGET% pwsh -version
 deploy_script:
   - docker login -u="%DOCKER_USER%" -p="%DOCKER_PASS%"
-  - docker push $env:DOCKER_TARGET
+  - docker push %DOCKER_TARGET%
