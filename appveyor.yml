@@ -10,9 +10,9 @@ install:
   - echo DOCKER_TARGET is %DOCKER_TARGET%
   - systeminfo
 build_script:
-  - ps: Invoke-Build.ps1 -DockerTarget %DOCKER_TARGET%
+  - ps: .\Invoke-Build.ps1 -DockerTarget %DOCKER_TARGET%
 test_script:
-  - ps: Invoke-Test.ps1 -DockerTarget %DOCKER_TARGET%
+  - ps: .\Invoke-Test.ps1 -DockerTarget %DOCKER_TARGET%
 deploy_script:
   - docker login -u="%DOCKER_USER%" -p="%DOCKER_PASS%"
-  - ps: Invoke-Deploy.ps1 -DockerTarget=%DOCKER_TARGET%
+  - ps: .\Invoke-Deploy.ps1 -DockerTarget=%DOCKER_TARGET%
