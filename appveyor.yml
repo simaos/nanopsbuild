@@ -10,10 +10,9 @@ install:
   - echo DOCKER_TARGET is %DOCKER_TARGET%
   - systeminfo
 build_script:
-  - docker build -t %DOCKER_TARGET% -f Dockerfile .
+  - ps Invoke-Build.ps1 -DockerTarget %DOCKER_TARGET%
 test_script:
-  - docker run %DOCKER_TARGET% systeminfo
-  - docker run %DOCKER_TARGET% pwsh -version
+  - ps Invoke-Test.ps1 -DockerTarget %DOCKER_TARGET%
 deploy_script:
   - docker login -u="%DOCKER_USER%" -p="%DOCKER_PASS%"
-  - docker push %DOCKER_TARGET%
+  - ps Invoke-Deploy.ps1 -DockerTarget=%DOCKER_TARGET%
